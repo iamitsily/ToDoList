@@ -37,7 +37,7 @@ public class Util {
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     public <T> ResponseEntity<T> response_OK(T text) {
-        return new ResponseEntity<>(text,HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     public <T> ResponseEntity<T> response_NOT_FOUND() {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

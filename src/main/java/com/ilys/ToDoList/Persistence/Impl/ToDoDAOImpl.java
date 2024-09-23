@@ -22,7 +22,7 @@ public class ToDoDAOImpl implements iToDoDAO {
     @Override
     public List<ToDo> getToDosByIdUser(Long idUser) {
         if (null != idUser){
-            return toDoRepository.findAllById(idUser);
+            return toDoRepository.findAllByIdAndActiveTodo(idUser,1);
         } else {
             return toDoRepository.findAll();
         }
@@ -34,7 +34,7 @@ public class ToDoDAOImpl implements iToDoDAO {
         if (toDo == null){
             return;
         }
-        toDo.setActive(0);
+        toDo.setActiveTodo(0);
         toDoRepository.save(toDo);
     }
 
@@ -45,6 +45,6 @@ public class ToDoDAOImpl implements iToDoDAO {
 
     @Override
     public List<ToDo> getToDosByUser(User user) {
-        return toDoRepository.findAllByUser(user);
+        return toDoRepository.findAllByUserAndActiveTodo(user, 1);
     }
 }

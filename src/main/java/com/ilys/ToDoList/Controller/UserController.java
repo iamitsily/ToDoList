@@ -21,8 +21,12 @@ public class UserController {
     private Util util;
 
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user){
+    public ResponseEntity<User> registerUser(@RequestBody User user, @RequestParam(required = false) Long idRol){
         userService.saveUser(user);
+        if (idRol != null){
+            this.addRoleToUser(user.getId(), idRol);
+        }
+        this.addRoleToUser(user.getId(), 1L);
         return util.responseOBJ_OK(user);
     }
 
@@ -39,7 +43,7 @@ public class UserController {
 
     @PutMapping("/update")
     public ResponseEntity<User> updateUser(@RequestBody User user){
-        return util.responseOBJ_OK(userService.saveUser(user));
+        return util.responseOBJ_OK(userService.updateUser(user));
     }
 
     //API para ROL

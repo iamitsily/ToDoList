@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -54,6 +55,32 @@ public class UserDAOImpl implements iUserDAO {
     public User saveUser(User user) {
         userRepository.save(user);
         return user;
+    }
+
+    @Override
+    public User updateUser(User user) {
+        Optional<User> existingUserOpt = userRepository.findById(user.getId());
+        if (existingUserOpt.isPresent()) {
+            User existingUser = existingUserOpt.get();
+
+            // Mantener los roles existentes
+            Set<Rol> existingRoles = existingUser.getUser_roles();
+
+            // Actualizar los datos del usuario
+            existingUser.setEmail(user.getEmail());
+            existingUser.setPassword(user.getPassword());
+            existingUser.setName(user.getName());
+            existingUser.setActive(user.getActive());
+
+            // Reasignar los roles existentes para evitar que se borren
+            existingUser.setUser_roles(existingRoles);
+
+            // Guardar el usuario actualizado
+            System.out.println(existingUser);
+            return userRepository.save(existingUser);
+        } else {
+            throw new RuntimeException("Usuario no encontrado");
+        }
     }
 
     @Override

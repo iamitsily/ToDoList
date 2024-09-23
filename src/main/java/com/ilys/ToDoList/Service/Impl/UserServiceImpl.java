@@ -40,6 +40,14 @@ public class UserServiceImpl implements iUserService {
     }
 
     @Override
+    public User updateUser(User user) {
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash = argon2.hash(1, 1024,1,user.getPassword());
+        user.setPassword(hash);
+        return userDAO.updateUser(user);
+    }
+
+    @Override
     public void deleteUser(Long id) {
         userDAO.deleteUser(id);
     }

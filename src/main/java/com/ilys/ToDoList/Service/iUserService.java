@@ -13,6 +13,7 @@ public interface iUserService {
     //Rol
     List<User> getUserDetails(Long id);
     User saveUser(User user);
+    User updateUser(User user);
     void deleteUser(Long id);
     //Rol
     User addRole(Long idUser, Long idRol);

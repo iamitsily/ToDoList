@@ -24,8 +24,8 @@ public class ToDo {
     @Column(name = "state", length = 1, nullable = false)
     private Integer state;
 
-    @Column(name = "active", length = 1, nullable = false)
-    private Integer active;
+    @Column(name = "activeTodo", length = 1, nullable = false)
+    private Integer activeTodo;
 
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)

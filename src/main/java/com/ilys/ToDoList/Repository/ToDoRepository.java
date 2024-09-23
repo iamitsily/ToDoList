@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.util.List;
 @Repository
 public interface ToDoRepository extends JpaRepository<ToDo, Long> {
-    List<ToDo> findAllById(Long id);
+    List<ToDo> findAllByIdAndActiveTodo(Long id, int active);
     List<ToDo> findAllByDate(Date date);
-    List<ToDo> findAllByUser(User user);
+    List<ToDo> findAllByUserAndActiveTodo(User user, int active);
 }

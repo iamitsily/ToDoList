@@ -31,7 +31,7 @@ public class ToDoDTO {
                 toDo.getTitle(),
                 toDo.getDescription(),
                 toDo.getState(),
-                toDo.getActive(),
+                toDo.getActiveTodo(),
                 new UserDTO(toDo.getUser())
         );
     }
@@ -42,7 +42,7 @@ public class ToDoDTO {
                 toDo.getTitle(),
                 toDo.getDescription(),
                 toDo.getState(),
-                toDo.getActive(),
+                toDo.getActiveTodo(),
                 new UserDTO(
                         toDo.getUser().getId(),
                         toDo.getUser().getEmail(),

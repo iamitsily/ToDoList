@@ -3,6 +3,7 @@ package com.ilys.ToDoList.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,5 +32,5 @@ public class User {
             joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_rol")
     )
-    private Set<Rol> user_roles;
+    private Set<Rol> user_roles = new HashSet<>();
 }
