@@ -15,10 +15,10 @@ public class ToDo {
     @Column(name = "date", length = 20, nullable = false)
     private Date date;
 
-    @Column(name = "title", length = 30, nullable = false)
+    @Column(name = "title", length = 100, nullable = false)
     private String title;
 
-    @Column(name = "description", length = 100, nullable = false)
+    @Column(name = "description", columnDefinition = "TEXT", nullable = false)
     private String description;
 
     @Column(name = "state", length = 1, nullable = false)
