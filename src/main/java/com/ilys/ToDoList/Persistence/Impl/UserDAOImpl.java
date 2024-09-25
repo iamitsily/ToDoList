@@ -53,9 +53,7 @@ public class UserDAOImpl implements iUserDAO {
 
     @Override
     public User getUserByEmail(String email) {
-        User user = userRepository.findUserByEmail(email);
-        user.setId(0L);
-        return user;
+        return userRepository.findUserByEmail(email);
     }
 
     @Override
