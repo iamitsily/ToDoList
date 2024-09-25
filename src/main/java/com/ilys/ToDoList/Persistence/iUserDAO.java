@@ -12,6 +12,7 @@ public interface iUserDAO {
     LoginDTO getUserByCredentials(User user);
     //Rol
     List<User> getUserDetails(Long id);
+    User getUserByEmail(String email);
     User saveUser(User user);
     User updateUser(User user);
     void deleteUser(Long id);

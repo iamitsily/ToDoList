@@ -12,7 +12,7 @@ public interface iUserService {
     LoginDTO getUserByCredentials(User user);
     //Rol
     List<User> getUserDetails(Long id);
-    User saveUser(User user);
+    User saveUser(User user, Long rol);
     User updateUser(User user);
     void deleteUser(Long id);
     //Rol

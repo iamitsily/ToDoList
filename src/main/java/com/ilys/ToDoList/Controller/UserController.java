@@ -21,12 +21,11 @@ public class UserController {
     private Util util;
 
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user, @RequestParam(required = false) Long idRol){
-        userService.saveUser(user);
-        if (idRol != null){
-            this.addRoleToUser(user.getId(), idRol);
+    public ResponseEntity<?> registerUser(@RequestBody User user, @RequestParam(required = false) Long idRol){
+        User newUser = userService.saveUser(user, idRol);
+        if (newUser == null){
+            return util.response_CONFLICT("El email ya esta registrado");
         }
-        this.addRoleToUser(user.getId(), 1L);
         return util.responseOBJ_OK(user);
     }
 

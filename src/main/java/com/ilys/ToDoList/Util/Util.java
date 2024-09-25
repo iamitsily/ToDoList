@@ -48,8 +48,8 @@ public class Util {
     public <T> ResponseEntity<T> response_CREATED() {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    public <T> ResponseEntity<T> response_CONFLICT() {
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
+    public <T> ResponseEntity<T> response_CONFLICT(T text) {
+        return new ResponseEntity<>(text, HttpStatus.CONFLICT);
     }
     public <T> ResponseEntity<T> response_INTERNAL_SERVER_ERROR() {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
